@@ -197,4 +197,4 @@
 ---
 ### ERD 다이어그램
 
-![다올 - 규장각 프로젝트 ERD](https://user-images.githubusercontent.com/86512230/143279610-c7386bf6-1198-4753-a222-af84f44bf821.png)
+![규장각](https://user-images.githubusercontent.com/86512230/144632322-93ce634d-7017-4b62-9b79-e704f4b1c47b.png)
