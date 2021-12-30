@@ -33,7 +33,7 @@ public class LendingBookController {
 	@PostMapping("/lendingBook.do")
 	public void lendingBook(HttpServletResponse response, @ModelAttribute Parcel parcel, @RequestParam("bookNo") int bookNo, @RequestParam("userId") String userId, @RequestParam("bookReceive") String bookReceive, @RequestParam("post") String post ,@RequestParam("address1") String address1, @RequestParam("address2") String address2) throws IOException {
 		parcel.setAddr(post + "/" + address1 + "/" + address2);
-		Book book = bookService.printOne(bookNo);
+//		Book book = bookService.printOne(bookNo);
 		LendingBook lendBook = new LendingBook();
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
