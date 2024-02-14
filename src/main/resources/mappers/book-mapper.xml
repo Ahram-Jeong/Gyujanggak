@@ -34,68 +34,76 @@
 	<!-- 간략 검색 -->
 	<select id="selectSearchSimple" resultMap="bookResultMap">
 		SELECT * FROM BOOK
-		<if test="searchCondition.toString() == 'title'">
-			WHERE BOOK_NAME LIKE '%' || #{ searchValue } || '%'
-		</if>
-		<if test="searchCondition.toString() == 'writer'">
-			WHERE BOOK_WRITER LIKE '%' || #{ searchValue } || '%'
-		</if>
-		<if test="searchCondition.toString() == 'publisher'">
-			WHERE PUBLISHER LIKE '%' || #{ searchValue } || '%'
-		</if>
+		<where>
+			<if test="searchCondition.toString() == 'title'">
+				AND BOOK_NAME LIKE '%' || #{ searchValue } || '%'
+			</if>
+			<if test="searchCondition.toString() == 'writer'">
+				AND BOOK_WRITER LIKE '%' || #{ searchValue } || '%'
+			</if>
+			<if test="searchCondition.toString() == 'publisher'">
+				AND PUBLISHER LIKE '%' || #{ searchValue } || '%'
+			</if>
+		</where>
 		ORDER BY UPDATE_DATE DESC
 	</select>
 	<!-- 페이징 처리 -->
 	<select id="selectListCount1" resultType="_int">
 		SELECT COUNT(*) FROM BOOK
-		<if test="searchCondition.toString() == 'title'">
-			WHERE BOOK_NAME LIKE '%' || #{ searchValue } || '%'
-		</if>
-		<if test="searchCondition.toString() == 'writer'">
-			WHERE BOOK_WRITER LIKE '%' || #{ searchValue } || '%'
-		</if>
-		<if test="searchCondition.toString() == 'publisher'">
-			WHERE PUBLISHER LIKE '%' || #{ searchValue } || '%'
-		</if>
+		<where>
+			<if test="searchCondition.toString() == 'title'">
+				AND BOOK_NAME LIKE '%' || #{ searchValue } || '%'
+			</if>
+			<if test="searchCondition.toString() == 'writer'">
+				AND BOOK_WRITER LIKE '%' || #{ searchValue } || '%'
+			</if>
+			<if test="searchCondition.toString() == 'publisher'">
+				AND PUBLISHER LIKE '%' || #{ searchValue } || '%'
+			</if>
+		</where>
 	</select>
 	<!-- 상세 검색 -->
 	<select id="selectSearchDetail" resultMap="bookResultMap">
-		SELECT * FROM BOOK WHERE
-		<if test="searchValue1 != ''">
-			BOOK_NAME LIKE '%' || #{ searchValue1 } || '%'
-		</if>
-		<if test="searchValue2 != ''">
-			AND BOOK_WRITER LIKE '%' || #{ searchValue2 } || '%'
-		</if>
-		<if test="searchValue3 != ''">
-			AND PUBLISHER LIKE '%' || #{ searchValue3 } || '%'
-		</if>
-		<if test="searchValue4 != ''">
-			AND ISBN LIKE '%' || #{ searchValue4 } || '%'
-		</if>
-		<if test="searchValue5 != ''">
-			AND BOOK_YEAR LIKE '%' || #{ searchValue5 } || '%'
-		</if>
+		SELECT * FROM BOOK
+		<where>
+			<if test="searchValue1 != ''">
+				AND BOOK_NAME LIKE '%' || #{ searchValue1 } || '%'
+			</if>
+			<if test="searchValue2 != ''">
+				AND BOOK_WRITER LIKE '%' || #{ searchValue2 } || '%'
+			</if>
+			<if test="searchValue3 != ''">
+				AND PUBLISHER LIKE '%' || #{ searchValue3 } || '%'
+			</if>
+			<if test="searchValue4 != ''">
+				AND ISBN LIKE '%' || #{ searchValue4 } || '%'
+			</if>
+			<if test="searchValue5 != ''">
+				AND BOOK_YEAR LIKE '%' || #{ searchValue5 } || '%'
+			</if>
+		</where>
 		ORDER BY UPDATE_DATE DESC
 	</select>
 	<!-- 페이징 처리 -->
 	<select id="selectListCount2" resultType="_int">
-		SELECT COUNT(*) FROM BOOK WHERE
-		<if test="searchValue1 != ''">
-			BOOK_NAME LIKE '%' || #{ searchValue1 } || '%'
-		</if>
-		<if test="searchValue2 != ''">
-			AND BOOK_WRITER LIKE '%' || #{ searchValue2 } || '%'
-		</if>
-		<if test="searchValue3 != ''">
-			AND PUBLISHER LIKE '%' || #{ searchValue3 } || '%'
-		</if>
-		<if test="searchValue4 != ''">
-			AND ISBN LIKE '%' || #{ searchValue4 } || '%'
-		</if>
-		<if test="searchValue5 != ''">
-			AND BOOK_YEAR LIKE '%' || #{ searchValue5 } || '%'
-		</if>
+		SELECT COUNT(*) FROM BOOK
+		<where>
+			<if test="searchValue1 != ''">
+				AND BOOK_NAME LIKE '%' || #{ searchValue1 } || '%'
+			</if>
+			<if test="searchValue2 != ''">
+				AND BOOK_WRITER LIKE '%' || #{ searchValue2 } || '%'
+			</if>
+			<if test="searchValue3 != ''">
+				AND PUBLISHER LIKE '%' || #{ searchValue3 } || '%'
+			</if>
+			<if test="searchValue4 != ''">
+				AND ISBN LIKE '%' || #{ searchValue4 } || '%'
+			</if>
+			<if test="searchValue5 != ''">
+				AND BOOK_YEAR LIKE '%' || #{ searchValue5 } || '%'
+			</if>
+		</where>
 	</select>
 	<!-- 주제별 검색 -->
 	<select id="selectSearchSub" resultMap="bookResultMap">
